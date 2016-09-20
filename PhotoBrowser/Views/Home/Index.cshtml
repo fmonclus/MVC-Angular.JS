@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div ng-controller="photoList" class="container">
+    <h1>{{message}}</h1>
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>Filtrar:</h3>
+            <input type="text" class="form-control" ng-model="$ctrl.query" />           
+        </div>
+        <div class="col-sm-3">
+            <h3>Orden:</h3>
+            <select class="form-control" ng-model="$ctrl.orderProp">
+                <option value="title" selected>Alfabético</option>
+                <option value="url">Ninguno</option>
+            </select>
+        </div>
+    </div>    
+    <hr />
+    <div class="row">
+        <div ng-repeat="image in images | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="col-sm-4">
+            <h3>{{image.title}}</h3>
+            <img ng-src="{{image.url}}" width="200"/>
+        </div>
+    </div>
+</div>
